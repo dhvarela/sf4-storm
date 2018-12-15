@@ -19,3 +19,5 @@
 ### phpStorm ###
 .idea/
 
+### environment parameters ###
+.env
