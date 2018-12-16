@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin actions{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'default/navbar.html.twig' %}
+
+
+    <div class="container">
+        <h1>Admin actions</h1>
+        <ul>
+            <li><a href="{{ path('admin_create_employee') }}">{{ "menu.create_employee"|trans }}</a> </li>
+        </ul>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+

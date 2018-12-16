@@ -1,6 +1,14 @@
 
+help.incorporationDate: The starting working day
+
+label.name: Name
+label.email: Email
+label.incorporationDate: IncorporationDate
+
 menu.about_us: About
 menu.contact: Contact
+menu.admin_actions: Admin actions
+menu.create_employee: Create employee
 menu.team: Team
 
 open_area.about_us: About us
