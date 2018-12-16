@@ -10,11 +10,15 @@
                 <a class="nav-link" href="{{ path('home') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Team</a>
+                <a class="nav-link" href="{{ path('team') }}">{{ 'menu.team'|trans }}</a>
             </li>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                <a class="nav-link" href="{{ path('contact') }}">{{ 'menu.contact'|trans }}</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('about_us') }}">{{ 'menu.about_us'|trans }}</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

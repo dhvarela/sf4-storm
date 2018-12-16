@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Team{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'default/navbar.html.twig' %}
+
+    <main role="main" class="container">
+
+        <div class="container">
+            <h1>Team</h1>
+            <p class="lead">
+                The team employees list:
+            </p>
+            <ul>
+                {% for e in employees %}
+                    <li>
+                        {{ e.name }} ({{ e.email }}) since {{ e.incorporationDate|date('d-m-Y') }}
+                        <a href="{{ path('team_detail', {id: e.id}) }}">Edit</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </main><!-- /.container -->
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+

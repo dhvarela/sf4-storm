@@ -19,6 +19,18 @@ class EmployeeRepository extends ServiceEntityRepository
         parent::__construct($registry, Employee::class);
     }
 
+    public function findByDate($date)
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.incorporationDate >= :date')
+            ->setParameter('date', $date)
+            ->orderBy('e.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Employee[] Returns an array of Employee objects
     //  */
