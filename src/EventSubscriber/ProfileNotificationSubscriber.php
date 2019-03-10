@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App\EventSubscriber;
 
 use App\Entity\Employee;
@@ -17,13 +8,8 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-/**
- * Notifies post's author about new comments.
- *
- * @author Oleg Voronkovich <oleg-voronkovich@yandex.ru>
- */
 class ProfileNotificationSubscriber implements EventSubscriberInterface
 {
     private $mailer;
