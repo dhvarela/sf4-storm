@@ -12,3 +12,6 @@ menu.create_employee: Create employee
 menu.team: Team
 
 open_area.about_us: About us
+
+notification.profile_seen: Your profile has been seen
+notification.profile_seen.description: Hello "{name}", your profile has been seen.

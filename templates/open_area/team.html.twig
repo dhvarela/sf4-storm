@@ -22,7 +22,7 @@
                 {% for e in employees %}
                     <li>
                         {{ e.name }} ({{ e.email }}) since {{ e.incorporationDate|date('d-m-Y') }}
-                        <a href="{{ path('team_detail', {id: e.id}) }}">Edit</a>
+                        <a href="{{ path('team_detail', {id: e.id}) }}">View</a>
                     </li>
                 {% endfor %}
             </ul>

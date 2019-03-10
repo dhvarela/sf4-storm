@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Employee;
+use App\Events;
 use App\Repository\EmployeeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -41,11 +44,16 @@ class OpenAreaController extends AbstractController
      *
      * @param Employee $employee
      *
+     * @param EventDispatcherInterface $eventDispatcher
      * @return Response
      */
-    public function teamDetail(Employee $employee)
+    public function teamDetail(Employee $employee, EventDispatcherInterface $eventDispatcher)
     {
         //$employee = $employeeRepository->find($id);
+
+        $event = new GenericEvent($employee);
+
+        $eventDispatcher->dispatch(Events::PROFILE_SEEN, $event);
 
         return $this->render('open_area/team_detail.html.twig', [
             'employee' => $employee
