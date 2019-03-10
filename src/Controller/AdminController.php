@@ -40,6 +40,7 @@ class AdminController extends AbstractController
 
             return $this->redirectToRoute('team');
         }
+
         return $this->render('admin/create_employee.html.twig', [
             'employee' => $employee,
             'form' => $form->createView(),

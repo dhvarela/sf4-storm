@@ -16,6 +16,11 @@
         <div class="container">
             <h1>{{ employee.name }}</h1>
             <h3>Working hard since {{ employee.incorporationDate|date('d-m-Y') }}</h3>
+            {% if employee.moreThanOneYearInCompany %}
+                <button type="button" class="btn btn-primary">Old Soldier</button>
+            {% endif %}
+
+            <hr>
 
             <p><label>Id:</label> {{ employee.id }}</p>
             <p><label>Name:</label> {{ employee.name }}</p>

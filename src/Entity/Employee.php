@@ -71,4 +71,11 @@ class Employee
 
         return $this;
     }
+
+    public function moreThanOneYearInCompany()
+    {
+        $diff = $this->incorporationDate->diff(new \DateTime());
+
+        return ($diff->format('%R%a') >= 365);
+    }
 }
