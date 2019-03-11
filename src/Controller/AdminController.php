@@ -6,6 +6,7 @@ use App\Entity\Employee;
 use App\Entity\WorkContract;
 use App\Form\EmployeeType;
 use App\Form\WorkContractType;
+use App\Repository\EmployeeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -75,4 +76,48 @@ class AdminController extends AbstractController
             'form'         => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/admin/list-employees", name="admin_list_employees")
+     * @param EmployeeRepository $employeeRepository
+     * @return Response
+     */
+    public function listEmployees(EmployeeRepository $employeeRepository): Response
+    {
+        $employees = $employeeRepository->findAll();
+
+        return $this->render('admin/list_employees.html.twig', [
+            'employees' => $employees,
+        ]);
+    }
+
+    /**
+     * @Route("/admin/edit-employee/{id}", name="admin_edit_employee")
+     * @param Request $request
+     * @param Employee $employee
+     * @return Response
+     */
+    public function editEmployee(Request $request, Employee $employee): Response
+    {
+        $form = $this->createForm(EmployeeType::class, $employee);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($employee);
+            $em->flush();
+
+            $this->addFlash('success', 'employee.updated_successfully');
+
+            return $this->redirectToRoute('admin_list_employees');
+        }
+
+        return $this->render('admin/create_edit_employee.html.twig', [
+            'employee' => $employee,
+            'form'     => $form->createView(),
+            'editing'  => true
+        ]);
+    }
+
 }
