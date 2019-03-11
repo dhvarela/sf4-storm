@@ -1,12 +1,15 @@
 
 help.incorporationDate: The starting working day
 
-label.name: Name
+label.create_work_contract: Create work contract
+label.description: Description
 label.email: Email
+label.name: Name
 label.incorporationDate: IncorporationDate
 
 menu.about_us: About
 menu.contact: Contact
+menu.create_work_contract: Create work contract
 menu.admin_actions: Admin actions
 menu.create_employee: Create employee
 menu.team: Team

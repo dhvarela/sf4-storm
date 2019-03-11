@@ -2,6 +2,9 @@
 
 namespace App\Form;
 use App\Entity\Employee;
+use App\Entity\WorkContract;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -35,6 +38,13 @@ class EmployeeType extends AbstractType
                 'label' => 'label.incorporationDate',
                 'help' => 'help.incorporationDate',
             ])
+            ->add('workContract', EntityType::class, [
+                'class' => WorkContract::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('wc')
+                        ->orderBy('wc.name', 'ASC');
+                },
+            ]);
         ;
     }
     /**
