@@ -1,19 +1,23 @@
 
 help.incorporationDate: The starting working day
 
+label.backend: Backend
 label.create_work_contract: Create work contract
 label.description: Description
 label.create_employee: Create employee
 label.edit_employee: Edit employee
 label.email: Email
+label.frontend: Frontend
 label.name: Name
 label.incorporationDate: IncorporationDate
+label.title: Title
 
 menu.about_us: About
 menu.contact: Contact
 menu.create_work_contract: Create work contract
 menu.admin_actions: Admin actions
 menu.create_employee: Create employee
+menu.create_project: Create project
 menu.list_employee: Employee list
 menu.team: Team
 

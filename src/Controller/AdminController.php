@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Employee;
+use App\Entity\Project;
 use App\Entity\WorkContract;
 use App\Form\EmployeeType;
+use App\Form\ProjectType;
 use App\Form\WorkContractType;
 use App\Repository\EmployeeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -74,6 +76,33 @@ class AdminController extends AbstractController
         return $this->render('admin/create_work_contract.html.twig', [
             'workContract' => $workContract,
             'form'         => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin/create-project", name="admin_create_project")
+     */
+    public function createProject(Request $request): Response
+    {
+        $project = new Project();
+
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($project);
+            $em->flush();
+
+            $this->addFlash('success', 'project.created_successfully');
+
+            return $this->redirectToRoute('admin');
+        }
+
+        return $this->render('admin/create_project.html.twig', [
+            'project' => $project,
+            'form'    => $form->createView(),
         ]);
     }
 
