@@ -25,6 +25,15 @@
             <p><label>Id:</label> {{ employee.id }}</p>
             <p><label>Name:</label> {{ employee.name }}</p>
             <p><label>Email:</label> {{ employee.email }}</p>
+
+            {% if employee.projects | length > 0 %}
+                <h4>Collaborative projects:</h4>
+                <ul>
+                {% for project in employee.projects %}
+                    <li>{{ project }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
         </div>
 
     </main><!-- /.container -->

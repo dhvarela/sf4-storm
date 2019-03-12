@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Form;
+
 use App\Entity\Employee;
+use App\Entity\Project;
 use App\Entity\WorkContract;
+use App\Repository\ProjectRepository;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -28,7 +31,7 @@ class EmployeeType extends AbstractType
         // $builder->add('title', null, ['required' => false, ...]);
         $builder
             ->add('name', TextType::class, [
-                'attr' => ['autofocus' => true],
+                'attr'  => ['autofocus' => true],
                 'label' => 'label.name',
             ])
             ->add('email', TextType::class, [
@@ -36,17 +39,25 @@ class EmployeeType extends AbstractType
             ])
             ->add('incorporationDate', DateTimeType::class, [
                 'label' => 'label.incorporationDate',
-                'help' => 'help.incorporationDate',
+                'help'  => 'help.incorporationDate',
             ])
             ->add('workContract', EntityType::class, [
-                'class' => WorkContract::class,
+                'class'         => WorkContract::class,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('wc')
                         ->orderBy('wc.name', 'ASC');
                 },
+            ])
+            ->add('projects', EntityType::class, [
+                'class'         => Project::class,
+                'query_builder' => function (ProjectRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->orderBy('p.title', 'ASC');
+                },
+                'multiple'      => true
             ]);
-        ;
     }
+
     /**
      * {@inheritdoc}
      */
