@@ -31,6 +31,12 @@ class EmployeeRepository extends ServiceEntityRepository
             ;
     }
 
+    public function save($employee)
+    {
+        $this->getEntityManager()->persist($employee);
+        $this->getEntityManager()->flush();
+    }
+
     // /**
     //  * @return Employee[] Returns an array of Employee objects
     //  */

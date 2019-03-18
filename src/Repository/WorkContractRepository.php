@@ -19,32 +19,9 @@ class WorkContractRepository extends ServiceEntityRepository
         parent::__construct($registry, WorkContract::class);
     }
 
-    // /**
-    //  * @return WorkContract[] Returns an array of WorkContract objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function save($workContract)
     {
-        return $this->createQueryBuilder('w')
-            ->andWhere('w.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('w.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $this->getEntityManager()->persist($workContract);
+        $this->getEntityManager()->flush();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?WorkContract
-    {
-        return $this->createQueryBuilder('w')
-            ->andWhere('w.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
