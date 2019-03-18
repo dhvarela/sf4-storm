@@ -49,8 +49,6 @@ class OpenAreaController extends AbstractController
      */
     public function teamDetail(Employee $employee, EventDispatcherInterface $eventDispatcher)
     {
-        //$employee = $employeeRepository->find($id);
-
         $event = new GenericEvent($employee);
 
         $eventDispatcher->dispatch(Events::PROFILE_SEEN, $event);
